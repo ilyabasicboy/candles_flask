@@ -1,0 +1,12 @@
+*.orig
+*.pyc
+*.dmp
+*.zip
+/.installed.cfg
+/.idea/*
+/.vscode/*
+/venv/*
+/python/*
+/bin/*
+/node_modules/*
+.sublime-gulp.cache

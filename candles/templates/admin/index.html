@@ -1,0 +1,23 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<div>
+    <h1>Список товаров</h1>
+    {% if products %}
+        <div>
+            {% for product in products %}
+             <div>
+
+                 {{ product.title }}
+                 {{ product.description }}
+                 {{ product.price }}
+                 {{ product.image }}
+                 <img src="{{ product.image }}" alt="">
+                 <a href="{{ url_for('products.delete', id=product.id) }}">Удалить товар</a>
+             </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <a href="{{ url_for('products.create') }}">Добавить товар</a>
+</div>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block content %}
+    <section class="hero_block__section">
+        <div class="container">
+            <div class="hero_block">
+                <div class="hero_block__content">
+                    <div class="hero_block__images">
+                        <img class="image-anise" src="{{ url_for('static', filename='img/anise.svg') }}" alt="">
+                        <img class="image-candle" src="{{ url_for('static', filename='img/candle.png') }}" alt="">
+                        <img class="image-cup" src="{{ url_for('static', filename='img/cup.svg') }}" alt="">
+                    </div>
+                    <h2 class="hero-title">
+                        Свечная лавка
+                    </h2>
+                    <div class="hero-subtitle">
+                        <span class="subtitle-bold">
+                            Anima de cera flores
+                        </span>
+                        <span class="subtitle-small">
+                            Душа восковых цветов
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about__section">
+        <div class="container">
+            <div class="about">
+                <div class="about__content">
+                    <h2 class="content-title">
+                        О наших изделиях
+                    </h2>
+                    <div class="advantages content__block">
+                        <div class="advantage__block">
+                            <div class="image-wrapper"></div>
+                            <div class="advantage__block-text">
+                                <div class="block__title">
+                                    Натуральные компоненты
+                                </div>
+                                <div class="advantage__block-description">
+                                    <ul class="content__list">
+                                        <li>
+                                            100% кокосовый воск
+                                        </li>
+                                        <li>
+                                            100% соевый воск
+                                        </li>
+                                        <li>
+                                            Гипсовое кашпо
+                                        </li>
+                                        <li>
+                                            Ягоды и травы
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="advantage__block">
+                            <div class="image-wrapper"></div>
+                            <div class="advantage__block-text">
+                                <div class="block__title">
+                                    Все изделия - ручная работа
+                                </div>
+                                <div class="advantage__block-description">
+                                    Каждое изделие эксклюзивно, имеет свой темперамент, душу и историю
+                                </div>
+                            </div>
+                        </div>
+                        <div class="advantage__block">
+                            <div class="image-wrapper"></div>
+                            <div class="advantage__block-text">
+                                <div class="block__title">
+                                    Уникальный дизайн может быть разработан с вашим участием
+                                </div>
+                                <div class="advantage__block-description">
+                                    Состав используемых материалов, цвет, узор,
+                                    форму, а также упаковку вы можете выбрать на свой вкус
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="catalog__section">
+        <div class="container">
+            <div class="catalog__content">
+                <h2 class="content-title">
+                    Каталог свечей
+                </h2>
+                <div class="content_block">
+
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

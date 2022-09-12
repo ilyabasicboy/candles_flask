@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label>
+      Имя пользователя:
+      <input name="username" id="username" required placeholder="Введите ваш логин">
+    </label>
+    <label for="password">
+      Пароль:
+      <input type="password" name="password" id="password" required placeholder="Введите пароль">
+    </label>
+    <input type="submit" value="Войти">
+  </form>
+{% endblock %}

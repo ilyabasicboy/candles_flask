@@ -1,0 +1,50 @@
+.hero_block
+    padding: 150px 0
+    display: flex
+    justify-content: center
+    background: #678d72
+    .hero_block__content
+        color: #fff
+        text-transform: uppercase
+        text-align: center
+        position: relative
+        .hero_block__images
+            margin-bottom: 20px
+            .image-anise, .image-candle
+                width: 120px
+            .image-cup
+                width: 100px
+        .hero-title
+            font-size: 24px
+            letter-spacing: 3px
+        .hero-title:after
+            background: #fff
+            width: 50px
+            height: 4px
+            content: ''
+            border-radius: 50px
+            display: flex
+            margin: auto
+            margin-top: 30px
+        .hero-subtitle
+            display: flex
+            flex-direction: column
+            margin-top: 20px
+            position: relative
+            .subtitle-bold
+                font-weight: 700
+            .subtitle-bold:after
+                content: ''
+                background: url(../img/laurel_leaves.svg)
+                background-size: cover
+                width: 50px
+                height: 50px
+                display: block
+                transform: rotate(25deg)
+                position: absolute
+                top: -45px
+                right: 30px
+            .subtitle-small
+                font-size: 12px
+                font-weight: 600
+                margin-top: 5px

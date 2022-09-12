@@ -1,0 +1,31 @@
+.about__content
+    background: #FFF
+    color: #678d72
+    padding: 100px 0px
+    .advantage__block:nth-child(2n)
+        .advantage__block-text
+            order: -1
+    .advantage__block
+        display: flex
+        font-size: 24px
+        width: 100%
+        justify-content: space-between
+        align-items: center
+        height: 500px
+        .image-wrapper
+            height: 400px
+            background: url('../img/candles.jpg') no-repeat
+            background-size: cover
+            border-radius: 50%
+        .advantage__block-text
+            @include centered-content
+            flex-direction: column
+            line-height: 1.25
+            .advantage__block-description
+                width: 100%
+                margin-left: 20px
+            .content__list > li:before
+                content: '-'
+                text-weight: bold
+    .advantage__block > div
+        width: 40%

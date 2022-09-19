@@ -1,12 +1,11 @@
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, url_for
+    Blueprint, flash, g, redirect, render_template, request, url_for, current_app
 )
 from werkzeug.exceptions import abort
 
 from candles.auth.auth import login_required
 from candles.db import get_db
 from werkzeug.utils import secure_filename
-from candles.config import UPLOAD_FILE_DIR
 import os
 
 bp = Blueprint('products', __name__)
@@ -16,7 +15,7 @@ bp = Blueprint('products', __name__)
 def index():
     db = get_db()
     products = db.execute(
-        'SELECT p.id, title, description, price, author_id'
+        'SELECT p.id, title, description, price, image, author_id'
         ' FROM product p JOIN user u ON p.author_id = u.id'
         ' ORDER BY p.id DESC'
     ).fetchall()
@@ -32,8 +31,10 @@ def create():
         price = request.form['price']
         image = request.files['image']
         imagename = secure_filename(image.filename)
-        image_path = os.path.join(UPLOAD_FILE_DIR, imagename)
+        images_folder = os.path.join(current_app.config['UPLOAD_FOLDER'], 'images')
+        image_path = os.path.join(images_folder, imagename)
         image.save(image_path)
+        image_url = os.path.join('media/images/', imagename)
         error = None
 
         if not title:
@@ -46,7 +47,7 @@ def create():
             db.execute(
                 'INSERT INTO product (title, description, price, image, author_id)'
                 ' VALUES (?, ?, ?, ?, ?)',
-                (title, description, price, image_path, g.user['id'])
+                (title, description, price, str(image_url), g.user['id'])
             )
             db.commit()
             return redirect(url_for('admin.index'))

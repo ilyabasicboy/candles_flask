@@ -1,7 +1,8 @@
 import os
 
 from flask import Flask, render_template
-from candles.config import UPLOAD_FILE_DIR
+from flask_sqlalchemy import SQLAlchemy
+from flask.helpers import send_from_directory
 
 def create_app(test_config=None):
     # create and configure the app
@@ -10,6 +11,7 @@ def create_app(test_config=None):
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'candles.sqlite'),
     )
+    app.config['UPLOAD_FOLDER'] = os.path.join(app.instance_path, 'media')
 
     if test_config is None:
         # load the instance config, if it exists, when not testing
@@ -25,7 +27,13 @@ def create_app(test_config=None):
         pass
 
     from . import db
-    db.init_app(app)
+    db.init_app(app)\
+
+    @app.route('/media/<path:filename>')
+    def media(filename):
+        upload_folder = os.path.join(app.root_path, app.config['UPLOAD_FOLDER'])
+        print(upload_folder)
+        return send_from_directory(upload_folder, filename)
 
     from candles.auth import auth
     app.register_blueprint(auth.bp)

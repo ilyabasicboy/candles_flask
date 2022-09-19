@@ -13,6 +13,6 @@ CREATE TABLE product (
   title TEXT NOT NULL,
   description TEXT NOT NULL,
   price INTEGER NOT NULL,
-  image TEXT NULL,
+  image TEXT NOT NULL,
   FOREIGN KEY (author_id) REFERENCES user (id)
 );

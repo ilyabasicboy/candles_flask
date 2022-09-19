@@ -16,7 +16,7 @@ bp = Blueprint('admin', __name__, url_prefix='/admin')
 def index():
     db = get_db()
     products = db.execute(
-        'SELECT p.id, title, description, price, author_id'
+        'SELECT p.id, title, description, price, image, author_id'
         ' FROM product p JOIN user u ON p.author_id = u.id'
         ' ORDER BY p.id DESC'
     ).fetchall()

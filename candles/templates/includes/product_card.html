@@ -1,0 +1,20 @@
+<div class="prodict__card">
+    <div class="product__image-wrapper">
+        <img src="{{ product.image }}" alt="{{ product.title }}">
+    </div>
+    <div class="product__content">
+        <div class="product__title">
+          {{ product.title }}
+        </div>
+        <div class="product__desc">
+            {{ product.description }}
+        </div>
+        <div class="product__buy">
+            <button class="btn">Добавить в корзину</button>
+            <div class="product__price">
+                {{ product.price }} руб.
+            </div>
+        </div>
+    </div>
+
+</div>

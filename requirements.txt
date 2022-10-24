@@ -7,4 +7,7 @@ MarkupSafe==2.1.1
 pkg_resources==0.0.0
 Werkzeug==2.2.2
 zipp==3.8.1
-Flask-SQLAlchemy==2.5.1
+flask-mongoengine==1.0.0
+WTForms=2.3.3
+Flask-Security==3.0.0
+Flask-login==0.6.2

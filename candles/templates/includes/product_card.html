@@ -1,7 +1,9 @@
 <div class="prodict__card">
-    <div class="product__image-wrapper">
-        <img src="{{ product.image }}" alt="{{ product.title }}">
-    </div>
+    {% if product.images %}
+        <div class="product__image-wrapper">
+            <img src="data:image;base64, {{ product.images.0.get_image() }}" title="{{ product.images.0.title|default(product.title, true) }}" alt="{{ product.images.0.title|default(product.title, true) }}">
+        </div>
+    {% endif %}
     <div class="product__content">
         <div class="product__title">
           {{ product.title }}
@@ -10,7 +12,24 @@
             {{ product.description }}
         </div>
         <div class="product__buy">
-            <button class="btn">Добавить в корзину</button>
+            {% if session.shopping_cart and product.id|string in session.shopping_cart %}
+                <div class="btn">
+                    Товар в корзине
+                </div>
+            {% else %}
+                <a class="btn" href="{{ url_for('shopping_cart.add_product', product_id=product.id) }}">Добавить в корзину</a>
+            {% endif %}
+            <div class="product__add-modal">
+                <a href="{{ url_for('shopping_cart.delete_product', product_id=product.id) }}">-</a>
+
+                <div class="product__add-amount">
+                    {% if session.shopping_cart and product.id|string in session.shopping_cart %}
+                        {{ session.shopping_cart.get(product.id|string) }}
+                    {% endif %}
+                </div>
+                <a href="{{ url_for('shopping_cart.add_product', product_id=product.id) }}">+</a>
+            </div>
+
             <div class="product__price">
                 {{ product.price }} руб.
             </div>

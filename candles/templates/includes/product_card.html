@@ -1,4 +1,4 @@
-<div class="prodict__card">
+<div class="prodict__card swiper-slide">
     {% if product.images %}
         <div class="product__image-wrapper">
             <img src="data:image;base64, {{ product.images.0.get_image() }}" title="{{ product.images.0.title|default(product.title, true) }}" alt="{{ product.images.0.title|default(product.title, true) }}">
@@ -8,6 +8,11 @@
         <div class="product__title">
           {{ product.title }}
         </div>
+        {% if product.subtitle %}
+            <div class="product__subtitle">
+                {{ product.subtitle }}
+            </div>
+        {% endif %}
         <div class="product__desc">
             {{ product.description }}
         </div>
@@ -17,7 +22,7 @@
                     Товар в корзине
                 </div>
             {% else %}
-                <a class="btn" href="{{ url_for('shopping_cart.add_product', product_id=product.id) }}">Добавить в корзину</a>
+                <a class="btn btn-add" href="{{ url_for('shopping_cart.add_product', product_id=product.id) }}">Добавить в корзину</a>
             {% endif %}
             <div class="product__add-modal">
                 <a href="{{ url_for('shopping_cart.delete_product', product_id=product.id) }}">-</a>
@@ -35,5 +40,4 @@
             </div>
         </div>
     </div>
-
 </div>

@@ -1,5 +1,5 @@
 from flask import session, Blueprint, redirect, url_for
-from candles.products.models import Product
+from candles.content.models import Product
 
 bp = Blueprint('shopping_cart', __name__)
 

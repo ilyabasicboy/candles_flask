@@ -1,0 +1,34 @@
+.order__content
+    color: $green-color
+    padding: 100px 0px
+    .step__block
+        display: flex
+        align-items: center
+        justify-content: space-around
+        margin-top: 50px
+        .step__icon
+            width: 40%
+            @include centered-content
+            &-wrapper
+                @include centered-content
+                background: $beige-color
+                border-radius: 50%
+                padding: 40px
+                svg
+                    width: 150px
+                    height: 150px
+        &-text
+            padding-left: 50px
+            width: 60%
+            display: flex
+            align-items: center
+            .text-loop
+                text-shadow: $black-solid-shadow
+                font-size: 100px
+                font-weight: 700
+            .text-wrapper
+                margin-left: 50px
+                .step__description
+                    a:hover
+                        text-decoration: none
+                        transform: scale(1.1)

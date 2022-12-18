@@ -20,98 +20,174 @@
                             Душа восковых цветов
                         </span>
                     </div>
+                    <a class="arrow__bottom-link scroll-js" href="#about">
+                        <svg class="arrow__bottom" width="30px" height="50px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             viewBox="0 0 330 330" style="enable-background:new 0 0 330 330;" xml:space="preserve">
+                            <path id="XMLID_225_" d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393
+                                c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393
+                                s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="about__section">
-        <div class="container">
-            <div class="about">
-                <div class="about__content">
-                    <h2 class="content-title">
-                        О наших изделиях
-                    </h2>
-                    <div class="advantages content__block">
-                        <div class="advantage__block">
-                            <div class="image-wrapper"></div>
-                            <div class="advantage__block-text">
-                                <div class="block__title">
-                                    Натуральные компоненты
+    {% if advantages %}
+        <section class="about__section" id="about">
+            <div class="container">
+                <div class="about">
+                    <div class="about__content">
+                        <h2 class="content-title content-title-green">
+                            О наших изделиях
+                        </h2>
+                        <div class="advantages">
+                            {% for advantage in advantages %}
+                                <div class="advantage__block" data-aos="fade-up" data-aos-duration="800">
+                                    {% if advantage.image %}
+                                        <div class="image__block">
+                                            <img src="data:image;base64, {{ advantage.image.get_image() }}" alt="">
+                                        </div>
+
+                                    {% endif %}
+                                    <div class="advantage__block-text">
+                                        <div class="text-wrapper">
+                                            {% if advantage.title %}
+                                                <div class="block__title">
+                                                    <p>
+                                                        {{ advantage.title }}
+                                                    </p>
+                                                    <span>{{ advantage.title[0] }}</span>
+                                                </div>
+                                            {% endif %}
+                                            {% if advantage.items or advantage.description %}
+                                                <div class="advantage__block-description block__description">
+                                                    {% if advantage.items %}
+                                                        <ul class="content__list">
+                                                            {% for item in advantage.items %}
+                                                                <li>
+                                                                    {{ item.text }}
+                                                                </li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    {% elif advantage.description %}
+                                                        {{ advantage.description }}
+                                                    {% endif %}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="advantage__block-description">
-                                    <ul class="content__list">
-                                        <li>
-                                            100% кокосовый воск
-                                        </li>
-                                        <li>
-                                            100% соевый воск
-                                        </li>
-                                        <li>
-                                            Гипсовое кашпо
-                                        </li>
-                                        <li>
-                                            Ягоды и травы
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="advantage__block">
-                            <div class="image-wrapper"></div>
-                            <div class="advantage__block-text">
-                                <div class="block__title">
-                                    Все изделия - ручная работа
-                                </div>
-                                <div class="advantage__block-description">
-                                    Каждое изделие эксклюзивно, имеет свой темперамент, душу и историю
-                                </div>
-                            </div>
-                        </div>
-                        <div class="advantage__block">
-                            <div class="image-wrapper"></div>
-                            <div class="advantage__block-text">
-                                <div class="block__title">
-                                    Уникальный дизайн может быть разработан с вашим участием
-                                </div>
-                                <div class="advantage__block-description">
-                                    Состав используемых материалов, цвет, узор,
-                                    форму, а также упаковку вы можете выбрать на свой вкус
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
-
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="catalog__section">
+        </section>
+    {% endif %}
+    {% if products %}
+    <section class="catalog__section" id="catalog">
         <div class="container">
             <div class="catalog__content">
                 <h2 class="content-title">
                     Каталог свечей
                 </h2>
-                <div class="products__slider">
-                    {% for product in products %}
-                        {% include 'includes/product_card.html' %}
+                <div class="swiper catalog__slider">
+                    <div class="swiper-wrapper catalog__slider-wrapper">
+                        {% for product in products %}
+                            {% include 'includes/product_card.html' %}
+                        {% endfor %}
+                    </div>
+                    <div class="swiper-pagination catalog__slider-pagination"></div>
+
+                    <div class="swiper-button-prev catalog__slider-btn"></div>
+                    <div class="swiper-button-next catalog__slider-btn"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+    {% if order_steps %}
+    <section class="order__section" id="order">
+        <div class="container">
+            <div class="order__content">
+                <h2 class="content-title content-title-green">
+                    Как заказать
+                </h2>
+                <div class="content__block">
+                    {% for step in order_steps %}
+                        <div class="step__block" data-aos="fade-up" data-aos-duration="800">
+                            <div class="step__block-text">
+                                <div class="text-loop">
+                                    {{ loop.index }}.
+                                </div>
+                                <div class="text-wrapper">
+                                    <div class="block__title step__title">
+                                       {{ step.title }}
+                                    </div>
+                                    {% if step.description %}
+                                        <div class="block__description step__description">
+                                            {{ step.description|safe }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% set step_image=step.image.get_file() %}
+                            {% if step_image %}
+                                <div class="step__icon">
+                                    <div class="step__icon-wrapper">
+                                        {{ step_image|safe }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
                     {% endfor %}
                 </div>
             </div>
         </div>
     </section>
-    <section class="feedback__section">
-        <div class="container">
-            <div class="feedback__content">
-                <h2 class="content-title">
-                    Оформить заказ
-                </h2>
-                <div class="feedback__form">
-                    {% include 'includes/feedback_form.html' %}
+    {% endif %}
+
+    {% if gallery.images %}
+        <div class="gallery__section" id="gallery">
+            <div class="container">
+                <div class="gallery__content">
+                    <h2 class="content-title">
+                        Галерея наших работ
+                    </h2>
+                    <div class="content__block">
+                        {% for image in gallery.images %}
+                            <img src="data:image;base64, {{ image.get_image() }}" alt="">
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    {% endif %}
+
+    {% if contacts %}
+    <div class="contacts__section" id="contacts">
+        <div class="container">
+            <div class="contacts__content">
+                <h2 class="content-title">
+                    Контакты
+                </h2>
+                <div class="content__block">
+                    {% for contact in contacts %}
+                        <a class="contact-link" href="{{ contact.link }}">
+                            {% if contact.image %}
+                                <img src="data:image;base64, {{ contact.image.get_image() }}" alt="">
+                            {% endif %}
+                            <div class="contact-title">
+                                {{ contact.title }}
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
 
     {% include 'includes/shopping_cart.html' %}
 {% endblock %}

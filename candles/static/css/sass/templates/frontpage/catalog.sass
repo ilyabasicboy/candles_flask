@@ -1,0 +1,98 @@
+.catalog__content
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/catalog-bg.jpg') #000 no-repeat
+    background-size: cover
+    color: $beige-color
+    padding: 100px 50px 50px
+    text-shadow: $green-shadow
+
+    .catalog__slider
+        display: block
+        margin-top: 100px
+        overflow: hidden
+        position: relative
+        min-height: 500px
+
+        .catalog__slider-wrapper
+
+            .prodict__card
+                display: flex
+                align-items: center
+                justify-content: space-around
+                width: 855px
+
+                .product__image-wrapper
+                    max-width: 40%
+
+                    img
+                        max-height: 350px
+                        border-radius: 3px
+                        box-shadow: $beige-shadow
+
+
+                .product__content
+                    max-width: 40%
+                    padding: 15px
+                    text-align: center
+
+                    .product__title
+                        font-size: 42px
+                        font-weight: 600
+                        letter-spacing: 3px
+
+                    .product__title:after
+                        content: ''
+                        width: 50px
+                        height: 5px
+                        border-radius: 50px
+                        margin: 20px auto 0px
+                        display: block
+                        background: $green-color
+
+                    .product__subtitle
+                        margin-top: 20px
+                        font-size: 20px
+                        line-height: 20px
+                        font-weight: 600
+
+                    .product__desc
+                        margin-top: 10px
+                        font-size: 16px
+                        line-height: 20px
+
+                    .product__buy
+                        margin-top: 30px
+                        display: flex
+                        justify-content: space-around
+
+                        .btn-add
+                            color: $beige-color
+                            border: solid 2px $green-color
+
+                        .btn-add:hover
+                            background: $green-color
+                            color: $beige-color
+
+                        .product__price
+                            font-size: 28px
+                            text-align: right
+                            font-weight: bold
+
+        /* slider navigation */
+
+        .catalog__slider-btn:after
+            transition: ease all 0.5s
+
+        .catalog__slider-btn:after
+            color: $beige-color
+
+        .catalog__slider-btn:hover:after
+            color: $green-color
+
+        .catalog__slider-pagination
+
+            .swiper-pagination-bullet
+                background: $beige-color
+                width: 15px
+                height: 15px
+                &-active
+                    background: $green-color

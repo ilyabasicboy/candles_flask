@@ -54,3 +54,8 @@ class CustomAdminIndexView(admin.AdminIndexView):
     def logout_view(self):
         login.logout_user()
         return redirect(url_for('admin.index'))
+
+
+# ---- ADMIN VIEWS ----- #
+class UserAdminView(CustomAdminIndexView):
+    column_editable_list = ['superuser']

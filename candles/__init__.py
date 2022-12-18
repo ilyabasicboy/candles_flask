@@ -1,11 +1,12 @@
 import os
-from flask import Flask
+from flask import Flask, render_template
+from flask_mail import Mail
 from flask.helpers import send_from_directory
 from flask_mongoengine import MongoEngine
 from flask_admin import Admin
-from candles.products.models import Product
+from candles.content.models import Gallery, Product, Advantage, OrderStep, Contact
 from candles.auth.models import User
-from candles.admin.views import CustomModelView, CustomAdminIndexView
+from candles.admin.views import CustomModelView, CustomAdminIndexView, UserAdminView
 import flask_login as login
 
 
@@ -39,6 +40,10 @@ def create_app():
     admin = Admin(app, 'Candles magazine', index_view=CustomAdminIndexView(), template_mode='bootstrap4')
     admin.add_view(CustomModelView(User))
     admin.add_view(CustomModelView(Product))
+    admin.add_view(CustomModelView(Advantage))
+    admin.add_view(CustomModelView(OrderStep))
+    admin.add_view(CustomModelView(Gallery))
+    admin.add_view(CustomModelView(Contact))
 
 
     # ensure the instance folder exists
@@ -53,9 +58,17 @@ def create_app():
         upload_folder = os.path.join(app.root_path, app.config['UPLOAD_FOLDER'])
         return send_from_directory(upload_folder, filename)
 
-    from candles.products import views as products
-    app.register_blueprint(products.bp)
-    app.add_url_rule('/', endpoint='index')
+    @app.route('/')
+    def index():
+        context = {
+            'products': Product.objects(),
+            'advantages': Advantage.objects(),
+            'order_steps': OrderStep.objects(),
+            'gallery': Gallery.objects().first(),
+            'contacts': Contact.objects(),
+            'user': login.current_user,
+        }
+        return render_template('frontpage.html', **context)
 
     from candles.feedback import views as feedback
     app.register_blueprint(feedback.bp)

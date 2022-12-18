@@ -1,5 +1,8 @@
 <div class="shopping_cart__block">
-    Корзина
+    <h3>Корзина</h3>
+
+    {% include 'includes/feedback_form.html' %}
+
     {% if session.shopping_cart %}
     <div class="shopping_cart__products">
         {% for product_id, amount in session.shopping_cart.items() %}
@@ -27,6 +30,9 @@
                         <a href="{{ url_for('shopping_cart.add_product', product_id=product.id) }}">+</a>
                     </div>
 
+                    <div class="product__price">
+                        <span>{{ product.price*amount }}</span>  руб.
+                    </div>
 
                 </div>
             {% endif %}

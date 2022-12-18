@@ -1,0 +1,32 @@
+<div>
+    <div>
+        Имя: {{ form.name }}
+    </div>
+    <div>
+        Телефон: {{ form.phone }}
+    </div>
+    {% if form.email %}
+        <div>
+            E-mail: {{ form.email }}
+        </div>
+    {% endif %}
+    {% if form.comment %}
+        <div>
+            Комментарий: {{ form.comment }}
+        </div>
+    {% endif %}
+    <div>
+        <h3>
+            Товары:
+        </h3>
+        {% set total=0 %}
+        {% for product in products %}
+            {% set amount=shopping_cart.get(product.id|string) %}
+                <div>
+                    {{ loop.index }}. {{ product.title }}, {{ amount }} шт. - {{ product.price*amount }} руб.
+                </div>
+            {% set total=total+(product.price*amount) %}
+        {% endfor %}
+        Итого: {{ total }}
+    </div>
+</div>

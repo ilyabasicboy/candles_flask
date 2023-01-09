@@ -7,7 +7,7 @@
 
     .catalog__slider
         display: block
-        margin-top: 100px
+        margin-top: 80px
         overflow: hidden
         position: relative
         min-height: 500px
@@ -18,7 +18,6 @@
                 display: flex
                 align-items: center
                 justify-content: space-around
-                width: 855px
 
                 .product__image-wrapper
                     max-width: 40%
@@ -64,18 +63,31 @@
                         display: flex
                         justify-content: space-around
 
-                        .btn-add
-                            color: $beige-color
-                            border: solid 2px $green-color
-
-                        .btn-add:hover
-                            background: $green-color
-                            color: $beige-color
-
                         .product__price
                             font-size: 28px
                             text-align: right
                             font-weight: bold
+
+                        .basket-info
+                            border: solid 2px $green-color
+                            border-radius: 5px
+                            padding: 10px
+                            @include centered-content
+
+                            .basket__amount-wrapper
+                                margin-left: 20px
+                                @include centered-content
+                                font-size: 18px
+
+                                a
+                                    font-weight: 600
+
+                                a:hover
+                                    text-decoration: none
+
+                                .basket__amount
+                                    margin-left: 10px
+                                    margin-right: 10px
 
         /* slider navigation */
 
@@ -87,12 +99,3 @@
 
         .catalog__slider-btn:hover:after
             color: $green-color
-
-        .catalog__slider-pagination
-
-            .swiper-pagination-bullet
-                background: $beige-color
-                width: 15px
-                height: 15px
-                &-active
-                    background: $green-color

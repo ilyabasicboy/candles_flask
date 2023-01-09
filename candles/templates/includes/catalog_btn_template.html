@@ -1,0 +1,19 @@
+{% if product_id and product_id|string in session.shopping_cart %}
+    <div class="basket-info">
+        <span>
+           Товар в корзине
+        </span>
+
+        <div class="basket__amount-wrapper">
+          <a class="catalog-btn-ajax" data-product="{{ product_id }}" href="{{ url_for('shopping_cart.delete_product', product_id=product_id) }}">-</a>
+          <div class="basket__amount">
+              {{ session.shopping_cart.get(product_id|string) }}
+          </div>
+          <a class="catalog-btn-ajax" data-product="{{ product_id }}" href="{{ url_for('shopping_cart.add_product', product_id=product_id) }}">+</a>
+        </div>
+    </div>
+{% else %}
+    <a class="btn btn-add catalog-btn-ajax" data-product="{{ product_id }}" href="{{ url_for('shopping_cart.add_product', product_id=product_id) }}">
+      Добавить в корзину
+    </a>
+{% endif %}

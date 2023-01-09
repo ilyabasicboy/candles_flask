@@ -1,6 +1,5 @@
 import os
 from flask import Flask, render_template
-from flask_mail import Mail
 from flask.helpers import send_from_directory
 from flask_mongoengine import MongoEngine
 from flask_admin import Admin
@@ -8,6 +7,7 @@ from candles.content.models import Gallery, Product, Advantage, OrderStep, Conta
 from candles.auth.models import User
 from candles.admin.views import CustomModelView, CustomAdminIndexView, UserAdminView
 import flask_login as login
+from candles.feedback.forms import BasketForm, QuestionForm
 
 
 def create_app():
@@ -67,6 +67,8 @@ def create_app():
             'gallery': Gallery.objects().first(),
             'contacts': Contact.objects(),
             'user': login.current_user,
+            'basket_form': BasketForm(),
+            'question_form': QuestionForm()
         }
         return render_template('frontpage.html', **context)
 

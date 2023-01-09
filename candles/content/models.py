@@ -57,10 +57,11 @@ class OrderStep(me.Document):
 
 
 class Gallery(me.Document):
+    gallery_title = me.StringField(required=True)
     images = me.ListField(me.EmbeddedDocumentField(Media))
 
 
 class Contact(me.Document):
-    title = me.StringField(required=True)
+    title = me.StringField()
     link = me.StringField(required=True)
-    image = me.EmbeddedDocumentField(Media)
+    icon = me.EmbeddedDocumentField(File)

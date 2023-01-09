@@ -1,0 +1,16 @@
+<div>
+    <div>
+        Имя: {{ form.name }}
+    </div>
+    <div>
+        Телефон: {{ form.phone }}
+    </div>
+    {% if form.email %}
+        <div>
+            E-mail: {{ form.email }}
+        </div>
+    {% endif %}
+    <div>
+        Вопрос: {{ form.question }}
+    </div>
+</div>

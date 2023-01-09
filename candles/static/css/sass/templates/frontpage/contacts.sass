@@ -1,0 +1,64 @@
+.contacts__content
+    color: $dark-green-color
+    padding: 100px 50px
+
+    .content__block
+        display: flex
+        align-items: start
+        justify-content: space-around
+
+        .contacts__title
+            font-size: 36px
+            font-weight: 500
+            margin-bottom: 30px
+
+        .contacts__block
+            @include centered-content
+            flex-direction: column
+            width: 40%
+
+            .contacts__list
+                @include centered-content
+                width: 100%
+
+                .contact-link
+                    text-decoration: none
+                    display: flex
+                    justify-content: start
+                    align-items: center
+                    margin: 0 10px
+                    transition: ease transform 0.5s
+
+                    .contact__icon
+                        svg
+                            height: 100px
+                            width: 100px
+
+                .contact-link:hover
+                    transform: scale(1.1)
+
+        .form-wrapper
+            width: 40%
+
+            .question__form
+
+                .form__fieldset
+                    display: flex
+                    flex-direction: column
+
+                input, textarea
+                    padding: 20px
+                    margin-bottom: 15px
+                    border-radius: 5px
+                    border: none
+                    background: #E5E5E5
+                    font-style: 'Roboto-Light', sans-serif
+                    font-size: 16px
+                    box-sizing: border-box
+
+                input:focus, textarea:focus
+                    border: $dark-green-color solid 2px
+                    outline: none
+
+                textarea
+                    resize: none

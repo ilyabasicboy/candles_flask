@@ -10,11 +10,27 @@
             E-mail: {{ form.email }}
         </div>
     {% endif %}
+    {% if form.city %}
+        <div>
+            Город: {{ form.city }}
+        </div>
+    {% endif %}
+    {% if form.address %}
+        <div>
+            Адрес: {{ form.address }}
+        </div>
+    {% endif %}
+    {% if form.post_index %}
+        <div>
+            Индекс: {{ form.post_index }}
+        </div>
+    {% endif %}
     {% if form.comment %}
         <div>
             Комментарий: {{ form.comment }}
         </div>
     {% endif %}
+
     <div>
         <h3>
             Товары:

@@ -1,0 +1,16 @@
+<form action="{{ url_for('feedback.question_feedback') }}" method="POST" class="feedback-form question__form">
+    {{ question_form.csrf_token() }}
+
+    <h3 class="form__title content-title-green">
+        Ответим на ваш вопрос
+    </h3>
+
+    <fieldset class="form__fieldset">
+        <input id="name" name="name" required="" placeholder="Ваше имя" type="text" value="">
+        <input id="email" name="email" type="email" placeholder="E-mail" value="">
+        <input id="phone" name="phone" required="" type="text" placeholder="Ваш телефон" value="">
+        <textarea id="question" name="question" required="" rows="5" placeholder="Задайте ваш вопрос"></textarea>
+
+        <button type="submit" class="btn">Отправить</button>
+    </fieldset>
+</form>

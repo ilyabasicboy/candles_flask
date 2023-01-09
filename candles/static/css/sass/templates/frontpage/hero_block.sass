@@ -3,23 +3,29 @@
     display: flex
     justify-content: center
     background: $green-color
+
     .hero_block__content
-        color: $beige-color
+        color: #fff
         text-transform: uppercase
         text-align: center
         position: relative
         display: flex
         justify-content: center
         flex-direction: column
+
         .hero_block__images
             margin-bottom: 20px
+
             .image-anise, .image-candle
                 width: 120px
+
             .image-cup
                 width: 100px
+
         .hero-title
             font-size: 24px
             letter-spacing: 3px
+
         .hero-title:after
             background: #fff
             width: 50px
@@ -29,13 +35,16 @@
             display: flex
             margin: auto
             margin-top: 30px
+
         .hero-subtitle
             display: flex
             flex-direction: column
             margin-top: 20px
             position: relative
+
             .subtitle-bold
                 font-weight: 700
+
             .subtitle-bold:after
                 content: ''
                 background: url(../img/laurel_leaves.svg)
@@ -47,10 +56,12 @@
                 position: absolute
                 top: -45px
                 right: 30px
+
             .subtitle-small
                 font-size: 12px
                 font-weight: 600
                 margin-top: 5px
+
         .arrow__bottom-link
             border: solid 1px rgba(255, 255, 255, 0)
             border-radius: 50%
@@ -59,10 +70,8 @@
             display: block
             width: 50px
             height: 50px
-            .arrow__bottom
-                fill: #fff
             transition: 1s border
             animation: move 3s infinite linear
-        .arrow__bottom-link:hover
-            -webkit-animation: 0
-            border: solid 1px rgba(255, 255, 255, 1)
+
+            .arrow__bottom
+                fill: #fff

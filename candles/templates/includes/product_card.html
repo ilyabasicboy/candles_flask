@@ -1,3 +1,4 @@
+{% set product_id = product.id %}
 <div class="prodict__card swiper-slide">
     {% if product.images %}
         <div class="product__image-wrapper">
@@ -17,22 +18,8 @@
             {{ product.description }}
         </div>
         <div class="product__buy">
-            {% if session.shopping_cart and product.id|string in session.shopping_cart %}
-                <div class="btn">
-                    Товар в корзине
-                </div>
-            {% else %}
-                <a class="btn btn-add" href="{{ url_for('shopping_cart.add_product', product_id=product.id) }}">Добавить в корзину</a>
-            {% endif %}
-            <div class="product__add-modal">
-                <a href="{{ url_for('shopping_cart.delete_product', product_id=product.id) }}">-</a>
-
-                <div class="product__add-amount">
-                    {% if session.shopping_cart and product.id|string in session.shopping_cart %}
-                        {{ session.shopping_cart.get(product.id|string) }}
-                    {% endif %}
-                </div>
-                <a href="{{ url_for('shopping_cart.add_product', product_id=product.id) }}">+</a>
+            <div class="product__buy-info product-info-js" data-product="{{ product_id }}" data-href="{{ url_for('shopping_cart.add_product', product_id=product_id) }}">
+                {% include 'includes/catalog_btn_template.html' %}
             </div>
 
             <div class="product__price">

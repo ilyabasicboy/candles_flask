@@ -1,47 +1,11 @@
-<div class="shopping_cart__block">
-    <h3>Корзина</h3>
+<div class="shopping_cart modal mfp-hide mfp-anim" id="shopping_cart-modal">
+    <h3 class="content-title content-title-green">Корзина</h3>
 
-    {% include 'includes/feedback_form.html' %}
-
-    {% if session.shopping_cart %}
-    <div class="shopping_cart__products">
-        {% for product_id, amount in session.shopping_cart.items() %}
-            {% set product = products.filter(id=product_id).first() %}
-            {% if product %}
-                <div class="shopping_cart__product">
-                    {% set image=product.images.0 %}
-                    {% if image %}
-                        <div class="shopping_cart__product-image">
-                            <img src="data:image;base64, {{ product.images.0.get_image() }}" alt="{{ image.title }}" title="{{ image.title }}">
-                        </div>
-                    {% endif %}
-                    <div class="shopping_cart__product-title">
-                        {{ product.title }}
-                    </div>
-                    <div class="shopping_cart__product-description">
-                        {{ product.description }}
-                    </div>
-
-                    <div class="product__amount-block">
-                        <a href="{{ url_for('shopping_cart.delete_product', product_id=product.id) }}">-</a>
-                        <div class="product__amount">
-                            {{ amount }}
-                        </div>
-                        <a href="{{ url_for('shopping_cart.add_product', product_id=product.id) }}">+</a>
-                    </div>
-
-                    <div class="product__price">
-                        <span>{{ product.price*amount }}</span>  руб.
-                    </div>
-
-                </div>
-            {% endif %}
-        {% endfor %}
+    <div class="basket-info-js">
+        {% if session.shopping_cart %}
+            {% include 'feedback/basket_form/basket_form.html' %}
+        {% else %}
+            {% include 'includes/empty_basket.html' %}
+        {% endif %}
     </div>
-    <a href="{{ url_for('shopping_cart.clear_cart') }}">Очистить корзину</a>
-    {% else %}
-        <div class="shopping_cart-empty">
-            Вы пока что ничего не добавили в корзину.
-        </div>
-    {% endif %}
 </div>

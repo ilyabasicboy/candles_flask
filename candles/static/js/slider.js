@@ -4,7 +4,8 @@ import Swiper, {
     Pagination,
     EffectFade,
     Autoplay,
-    Thumbs
+    Thumbs,
+    Grid
 } from 'swiper';
 
 Swiper.use([
@@ -12,23 +13,24 @@ Swiper.use([
     Pagination,
     EffectFade,
     Autoplay,
-    Thumbs
+    Thumbs,
+    Grid
 ]);
 
 $(function () {
 
-    //Init Intro Slider
+    //Init Catalog Slider
     function swiperCatalogInit() {
-        const swiper = new Swiper('.swiper', {
+        const swiper = new Swiper('.catalog__slider', {
           speed: 300,
           spaceBetween: 100,
           loop: true,
           autoplay: {
               delay: 3000,
-              pauseOnMouseEnter: true,
+              pauseOnMouseEnter: true
           },
           pagination: {
-              el: '.swiper-pagination',
+              el: '.catalog__swiper-pagination',
               type: 'bullets',
               clickable: true,
           },
@@ -39,4 +41,25 @@ $(function () {
         });
     };
     swiperCatalogInit();
+
+
+    //Init Gallery Slider
+    function swiperGalleryInit() {
+        const swiper = new Swiper('.gallery__swiper', {
+            slidesPerView: 4,
+            grid: {
+                rows: 2,
+                fill: 'row'
+            },
+            autoplay: {
+                delay: 3000,
+            },
+            spaceBetween: 10,
+            pagination: {
+                el: '.gallery__swiper-pagination',
+                clickable: true,
+            },
+        });
+    };
+    swiperGalleryInit();
 });

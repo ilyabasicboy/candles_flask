@@ -2,7 +2,7 @@
 {% block content %}
     <section class="hero_block__section">
         <div class="container">
-            <div class="hero_block">
+            <div class="hero_block" id="hero">
                 <div class="hero_block__content">
                     <div class="hero_block__images">
                         <img class="image-anise" src="{{ url_for('static', filename='img/anise.svg') }}" alt="">
@@ -20,7 +20,7 @@
                             Душа восковых цветов
                         </span>
                     </div>
-                    <a class="arrow__bottom-link scroll-js" href="#about">
+                    <a class="arrow__bottom-link scroll-js" href="#about" title="Вниз">
                         <svg class="arrow__bottom" width="30px" height="50px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                              viewBox="0 0 330 330" style="enable-background:new 0 0 330 330;" xml:space="preserve">
                             <path id="XMLID_225_" d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393
@@ -53,7 +53,7 @@
                                     <div class="advantage__block-text">
                                         <div class="text-wrapper">
                                             {% if advantage.title %}
-                                                <div class="block__title">
+                                                <div class="block__title content-title-green">
                                                     <p>
                                                         {{ advantage.title }}
                                                     </p>
@@ -98,7 +98,7 @@
                             {% include 'includes/product_card.html' %}
                         {% endfor %}
                     </div>
-                    <div class="swiper-pagination catalog__slider-pagination"></div>
+                    <div class="catalog__swiper-pagination swiper-pagination slider-pagination"></div>
 
                     <div class="swiper-button-prev catalog__slider-btn"></div>
                     <div class="swiper-button-next catalog__slider-btn"></div>
@@ -122,7 +122,7 @@
                                     {{ loop.index }}.
                                 </div>
                                 <div class="text-wrapper">
-                                    <div class="block__title step__title">
+                                    <div class="block__title step__title content-title-green">
                                        {{ step.title }}
                                     </div>
                                     {% if step.description %}
@@ -156,9 +156,21 @@
                         Галерея наших работ
                     </h2>
                     <div class="content__block">
-                        {% for image in gallery.images %}
-                            <img src="data:image;base64, {{ image.get_image() }}" alt="">
-                        {% endfor %}
+                        <div class="gallery__swiper swiper">
+                            <div class="gallery__swiper-wrapper swiper-wrapper">
+                                {% for image in gallery.images %}
+                                    <a href="" class="gallery__image-link swiper-slide">
+                                        <img src="data:image;base64, {{ image.get_image() }}" alt="">
+                                        {% if image.title %}
+                                            <span class="image-title">
+                                                {{ image.title }}
+                                            </span>
+                                        {% endif %}
+                                    </a>
+                                {% endfor %}
+                            </div>
+                            <div class="swiper-pagination slider-pagination gallery__swiper-pagination"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -169,25 +181,35 @@
     <div class="contacts__section" id="contacts">
         <div class="container">
             <div class="contacts__content">
-                <h2 class="content-title">
-                    Контакты
+                <h2 class="content-title content-title-green">
+                    Связаться с нами
                 </h2>
                 <div class="content__block">
-                    {% for contact in contacts %}
-                        <a class="contact-link" href="{{ contact.link }}">
-                            {% if contact.image %}
-                                <img src="data:image;base64, {{ contact.image.get_image() }}" alt="">
-                            {% endif %}
-                            <div class="contact-title">
-                                {{ contact.title }}
+                    {% if contacts %}
+                        <div class="contacts__block" data-aos="fade-up" data-aos-duration="800">
+                            <h3 class="contacts__title content-title-green">
+                                Мы в соцсетях
+                            </h3>
+                            <div class="contacts__list">
+                                {% for contact in contacts %}
+                                    <a class="contact-link" href="{{ contact.link }}" target="_blank">
+                                        {% set contact_icon=contact.icon.get_file() %}
+                                        <div class="contact__icon" title="{{ contact.title }}">
+                                            {% if contact_icon %}
+                                                {{ contact_icon|safe }}
+                                            {% endif %}
+                                        </div>
+                                    </a>
+                                {% endfor %}
                             </div>
-                        </a>
-                    {% endfor %}
+                        </div>
+                    {% endif %}
+                    <div class="form-wrapper" data-aos="fade-up" data-aos-duration="800">
+                        {% include 'feedback/question_form/question_form.html' %}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     {% endif %}
-
-    {% include 'includes/shopping_cart.html' %}
 {% endblock %}

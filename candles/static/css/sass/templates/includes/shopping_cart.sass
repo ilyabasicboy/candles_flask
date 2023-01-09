@@ -1,0 +1,104 @@
+.shopping_cart
+    background: #fff
+    border-radius: 5px
+    padding: 50px 80px
+    max-width: 50%
+    margin: 40px auto
+    display: flex
+    justify-content: center
+    align-items: stretch
+    flex-direction: column
+    color: $dark-green-color
+    position: relative
+    transition: ease all 1s
+
+    .shopping_cart__products
+        display: grid
+        grid-template-columns: auto auto
+        align-items: center
+        justify-items: start
+        gap: 10px 20px
+        padding-bottom: 30px
+        border-bottom: 1px solid $green-color
+
+        .shopping_cart__product
+            @include centered-content
+
+            &-image
+                img
+                    height: 100px
+                    width: 80px
+                    border-radius: 5px
+
+            &-text
+                font-size: 18px
+                margin-left: 30px
+
+                .product__amount-block
+                    display: flex
+                    justify-content: space-around
+                    align-items: center
+                    vertical-align: middle
+                    font-size: 24px
+
+                .shopping_cart__product-title
+                    font-weight: 600
+
+                .product__price
+                    span
+                        font-weight: 600
+                    font-size: 24px
+
+            &-text > div
+                margin-top: 10px
+
+    .shopping__cart-total
+        margin-top: 20px
+        display: flex
+        justify-content: space-between
+        align-items: center
+
+        .total_price
+            font-size: 18px
+
+            span
+                font-weight: 600
+                font-size: 24px
+
+        .clear__cart
+            margin-top: 20px
+            align-self: flex-end
+
+    a:hover
+        text-decoration: none
+        text-shadow: $green-shadow
+
+    .basket__form
+        margin-top: 50px
+        margin-left: auto
+        margin-right: auto
+
+        .form__fieldset
+            display: flex
+            flex-direction: column
+
+        input, textarea
+            padding: 20px
+            margin-bottom: 15px
+            border-radius: 5px
+            border: none
+            background: #E5E5E5
+            font-style: 'Roboto-Light', sans-serif
+            font-size: 16px
+            box-sizing: border-box
+
+        input:focus, textarea:focus
+            border: $dark-green-color solid 2px
+            outline: none
+
+        textarea
+            resize: none
+
+    .shopping_cart-empty
+        text-align: center
+        font-size: 18px

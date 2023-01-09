@@ -1,19 +1,23 @@
 .content-title
     font-size: 54px
     letter-spacing: 3px
-    font-weight: bold
+    font-weight: 500
     text-align: center
     text-transform: uppercase
-    font-weight: bold
     margin-bottom: 50px
     font-family: 'Comfortaa', sans-
     &-green
         text-shadow: $green-shadow
 
+.form__title
+    font-size: 36px
+    font-weight: 500
+    margin-bottom: 30px
+
 .block__title
     font:
         size: 38px
-        weight: bold
+        weight: 500
     margin-bottom: 20px
     width: 100%
 
@@ -29,16 +33,20 @@
 
 
 .btn
-    padding: 10px
+    padding: 15px
     font-size: 16px
-    border: none
     border-radius: 3px
     cursor: pointer
-    font-weight: 700
-    transition: ease all 0.5s
+    font-weight: 500
+    transition: ease background 0.5s
+    display: block
+    background: $green-color
+    color: $beige-color
+    border: none
 
 .btn:hover
     text-decoration: none
+    background: $dark-green-color
 
 @keyframes move
     0%
@@ -51,3 +59,15 @@
         transform: translateY(5px)
     100%
         transform: translateY(-5px)
+
+
+.slider-pagination
+    .swiper-pagination-bullet
+        background: $beige-color
+        width: 15px
+        height: 15px
+        &-active
+            background: $green-color
+
+.hidden
+    visibility: hidden

@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Свечная лавка{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='bundle/bundle.c503e5067c0dde013356.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bundle/bundle.061506e84d672313b689.css') }}">
 </head>
 <body>
-    <header class="header">
+    <header class="header sticky">
         <div class="container">
             <div class="header__block">
                 <a href="#hero" class="header__logo scroll-js">
@@ -64,6 +64,9 @@
                         </li>
                     </ul>
                 </nav>
+                <button class="header__burger burger" type="button">
+                    <span class="burger__item">Menu</span>
+                </button>
             </div>
         </div>
     </header>
@@ -73,7 +76,7 @@
         {% endblock %}
     </main>
 
-    <footer>
+    <footer class="footer">
         <div class="container">
             <div class="footer__block">
                 <div class="footer__contacts">
@@ -100,7 +103,7 @@
     {% include 'includes/shopping_cart.html' %}
 
     {% block js %}
-        <script src="{{ url_for('static', filename='bundle/bundle.c503e5067c0dde013356.js') }}"></script>
+        <script src="{{ url_for('static', filename='bundle/bundle.061506e84d672313b689.js') }}"></script>
     {% endblock %}
 </body>
 </html>

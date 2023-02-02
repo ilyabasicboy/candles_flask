@@ -1,57 +1,59 @@
-.gallery__content
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/catalog-bg.jpg') #000 no-repeat
+.gallery__section
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../img/catalog-bg.jpg') #000 no-repeat
     background-size: cover
-    color: $beige-color
-    padding: 100px 50px 50px
-    text-shadow: $green-shadow
 
-    .content__block
-        margin-top: 80px
-        position: relative
-        height: 100%
+    .gallery__content
+        color: $beige-color
+        padding: 100px 50px 50px
+        text-shadow: $green-shadow
 
-        .gallery__swiper
+        .content__block
+            margin-top: 30px
             position: relative
-            min-height: 600px
+            height: 100%
 
-            .gallery__image-link
+            .gallery__swiper
                 position: relative
-                box-sizing: border-box
-                border-radius: 5px
+                min-height: 420px
 
-                img
-                    height: 250px
-                    width: 100%
-                    object-fit: cover
+                .gallery__item
+                    position: relative
+                    box-sizing: border-box
                     border-radius: 5px
 
-                .image-title
+                    img
+                        height: 350px
+                        width: 100%
+                        object-fit: cover
+                        border-radius: 5px
+
+                    .image-title
+                        position: absolute
+                        top: 50%
+                        left: 50%
+                        transform: translate(-50%, -50%)
+                        opacity: 0
+                        transition: ease opacity 0.5s
+                        font-size: 14px
+                        z-index: 2
+
+                .gallery__image-link:before
+                    content: ''
                     position: absolute
-                    top: 50%
-                    left: 50%
-                    transform: translate(-50%, -50%)
+                    top: 0
+                    left: 0
+                    width: 100%
+                    height: 100%
+                    background: rgba(82, 113, 91, 0.5)
                     opacity: 0
-                    transition: ease opacity 0.5s
-                    font-size: 14px
-                    z-index: 2
+                    pointer-events: none
+                    z-index: 1
+                    transition: opacity ease 0.6s
 
-            .gallery__image-link:before
-                content: ''
-                position: absolute
-                top: 0
-                left: 0
-                width: 100%
-                height: 100%
-                background: rgba(82, 113, 91, 0.5)
-                opacity: 0
-                pointer-events: none
-                z-index: 1
-                transition: opacity ease 0.6s
-
-            .gallery__image-link:hover:before
-                opacity: 100
-
-            .gallery__image-link:hover
-
-                .image-title
+                .gallery__image-link:hover:before
                     opacity: 100
+
+                .gallery__image-link:hover
+
+                    .image-title
+                        opacity: 100

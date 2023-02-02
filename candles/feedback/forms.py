@@ -14,5 +14,5 @@ class BasketForm(FlaskForm):
 class QuestionForm(FlaskForm):
     name = wtforms.StringField('Ваше имя:', [wtforms.validators.DataRequired()])
     email = wtforms.StringField('E-mail:', [wtforms.validators.Email()])
-    phone = wtforms.IntegerField('Телефон:', [wtforms.validators.DataRequired()])
+    phone = wtforms.StringField('Телефон:')
     question = wtforms.TextAreaField('Задайте ваш вопрос:', [wtforms.validators.Length(max=800), wtforms.validators.DataRequired()])

@@ -1,60 +1,62 @@
-.about__content
-    background: #FFF
-    color: $dark-green-color
-    padding: 100px 0px
+.about__section
 
-    .advantage__block:nth-child(2n)
+    .about__content
+        background: none
+        color: $dark-green-color
+        padding: 100px 0px
 
-        .advantage__block-text
-            order: -1
+        .advantage__block:nth-child(2n)
 
-    .advantage__block
-        display: flex
-        width: 100%
-        align-items: center
-        margin-top: 50px
+            .advantage__block-text
+                order: -1
 
-        .image__block
-            width: 40%
-            @include centered-content
+        .advantage__block
+            display: flex
+            width: 100%
+            align-items: center
+            margin-top: 50px
 
-            img
-                max-height: 350px
-                box-sizing: border-box
-                box-shadow: 0 0 20px rgba(0, 0, 0, 0.5)
-                border-radius: 5px
+            .image__block
+                width: 40%
+                @include centered-content
 
-        .advantage__block-text
-            @include centered-content
-            flex-direction: column
-            justify-content: center
-            line-height: 1.25
-            width: 60%
+                img
+                    max-height: 350px
+                    box-sizing: border-box
+                    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5)
+                    border-radius: 5px
 
-            .text-wrapper
-                padding: 50px 50px
+            .advantage__block-text
+                @include centered-content
+                flex-direction: column
+                justify-content: center
+                line-height: 1.25
+                width: 60%
 
-                .advantage__block-description
-                    width: 100%
-                    position: relative
-                    z-index: 2
+                .text-wrapper
+                    padding: 50px 50px
 
-                    .content__list > li:before
-                        content: '-'
-                        text-weight: bold
-
-                .block__title
-                    position: relative
-
-                    span
-                        position: absolute
-                        z-index: 1
-                        font-size: 170px
-                        font-weight: 300
-                        color: #e0e0e0
-                        top: -80px
-                        left: -30px
-
-                    p
-                        z-index: 2
+                    .advantage__block-description
+                        width: 100%
                         position: relative
+                        z-index: 2
+
+                        .content__list > li:before
+                            content: '-'
+                            text-weight: bold
+
+                    .block__title
+                        position: relative
+
+                        span
+                            position: absolute
+                            z-index: 1
+                            font-size: 170px
+                            font-weight: 300
+                            color: #e0e0e0
+                            top: -80px
+                            left: -30px
+
+                        p
+                            z-index: 2
+                            position: relative

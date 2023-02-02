@@ -1,52 +1,5 @@
-<div class="shopping_cart__products">
-    {% if not basket_products %}
-        {% set basket_products=products.filter(id__in=session.shopping_cart.keys()) %}
-    {% endif %}
-    {% for product in basket_products %}
-        {% set product_id = product.id|string %}
-        {% set amount = session.shopping_cart.get(product_id) %}
-        <div class="shopping_cart__product">
+<form action="{{ url_for('feedback.basket_feedback') }}" novalidate method="POST" id="basket_form" class="feedback-form basket__form">
 
-            {% set image=product.images.0 %}
-            {% if image %}
-                <div class="shopping_cart__product-image">
-                    <img src="data:image;base64, {{ product.images.0.get_image() }}" alt="{{ image.title }}" title="{{ image.title }}">
-                </div>
-            {% endif %}
-
-            <div class="shopping_cart__product-text">
-                <div class="shopping_cart__product-title">
-                    {{ product.title }}
-                </div>
-
-                <div class="product__amount-block">
-                    <a class="catalog-btn-ajax" data-product="{{ product_id }}" href="{{ url_for('shopping_cart.delete_product', product_id=product.id) }}">-</a>
-                    <div class="product__amount">
-                        {{ amount }}
-                    </div>
-                    <a class="catalog-btn-ajax" data-product="{{ product_id }}" href="{{ url_for('shopping_cart.add_product', product_id=product.id) }}">+</a>
-                </div>
-
-                <div class="product__price">
-                    <span>{{ product.price*amount }}</span>  руб.
-                </div>
-            </div>
-        </div>
-    {% endfor %}
-
-
-</div>
-
-<div class="shopping__cart-total">
-    {% if session.shopping_cart_total %}
-        <div class="total_price">
-            Итого: <span>{{ session.shopping_cart_total }}</span> руб.
-        </div>
-    {% endif %}
-    <a class="clear__cart catalog-btn-ajax" href="{{ url_for('shopping_cart.clear_cart') }}">Очистить корзину</a>
-</div>
-
-<form action="{{ url_for('feedback.basket_feedback') }}" method="POST" class="feedback-form basket__form">
     {{ basket_form.csrf_token() }}
 
     <h3 class="form__title content-title-green">
@@ -54,13 +7,13 @@
     </h3>
 
     <fieldset class="form__fieldset">
-        <input type="text" name="name" required placeholder="Ваше имя">
-        <input type="email" name="email" placeholder="E-mail">
-        <input type="text" name="phone" required placeholder="Ваш телефон">
-        <input type="text" name="city" required placeholder="Город">
-        <textarea name="address" required rows="5" placeholder="Адрес"></textarea>
-        <input type="text" name="post_index" placeholder="Почтовый индекс">
-        <textarea name="comment" rows="5" placeholder="Комментарий"></textarea>
+        <input class="{% if basket_form.name.errors %}error{% endif %}" type="text" name="name" required placeholder="Ваше имя" {% if basket_form.data.name %}value="{{ basket_form.data.name }}"{% endif %}>
+        <input class="{% if basket_form.email.errors %}error{% endif %}" type="email" name="email" placeholder="E-mail" {% if basket_form.data.email %}value="{{ basket_form.data.email }}"{% endif %}>
+        <input class="{% if basket_form.phone.errors %}error{% endif %}" type="text" name="phone" required placeholder="Ваш телефон" {% if basket_form.data.phone %}value="{{ basket_form.data.phone }}"{% endif %}>
+        <input class="{% if basket_form.city.errors %}error{% endif %}" type="text" name="city" required placeholder="Город" {% if basket_form.data.city %}value="{{ basket_form.data.city }}"{% endif %}>
+        <textarea class="{% if basket_form.address.errors %}error{% endif %}" name="address" required rows="5" placeholder="Адрес">{% if basket_form.data.address %}{{ basket_form.data.address }}{% endif %}</textarea>
+        <input class="{% if basket_form.post_index.errors %}error{% endif %}" type="text" name="post_index" placeholder="Почтовый индекс" {% if basket_form.data.post_index %}value="{{ basket_form.data.post_index }}"{% endif %}>
+        <textarea class="{% if basket_form.comment.errors %}error{% endif %}" name="comment" rows="5" placeholder="Комментарий">{% if basket_form.data.comment %}{{ basket_form.data.comment }}{% endif %}</textarea>
 
         <button type="submit" class="btn">Отправить</button>
     </fieldset>

@@ -1,13 +1,16 @@
 .header
     z-index: 3
+    background: $green-color
+    display: flex
+    align-items: center
+    height: 80px
 
     .header__block
         display: flex
         justify-content: space-between
         font-weight: bold
-
-        padding: 0px 30px
-        background: $green-color
+        transition: ease all 0.5s
+        padding: 0 30px
         color: $beige-color
 
         .header__logo
@@ -20,23 +23,53 @@
             font-size: 24px
 
             svg
-                height: 80px
-                width: 80px
+                height: 50px
+                width: 50px
                 fill: $beige-color
-                transition: ease all 0.5s
 
         .header__menu
             font-size: 12px
             text-transform: uppercase
             letter-spacing: 2px
 
-            &-list
+            @media screen and (max-width: $md-min)
+                z-index: 3
+                position: fixed
+                left: 0
+                top: 80px
+                bottom: 0
+                height: calc(100% - 80px)
                 width: 100%
+                background-color: $green-color
+                transform: translate3d(-100%, 0, 0)
+                overflow: hidden
+                overflow-y: auto
+                @include centered-content
+
+                &-list
+                    display: flex
+                    justify-content: center
+                    align-items: start
+                    flex-direction: column
+
+                    .menu__item:not(:last-child)
+                        margin-right: 0
+                        margin-bottom: 15px
+
+
+                &.anim--active
+                    transition: transform 0.7s ease-in-out
+
+                &.active
+                    transform: translate3d(0, 0, 0)
+
+            &-list
+                width: auto
                 height: 100%
                 display: flex
 
                 .menu__item
-                    @include centered-content
+                    display: block
 
                     a
                         color: $beige-color
@@ -63,10 +96,4 @@
     position: fixed
     background:
     top: 0
-
-    .header__block
-
-        .header__logo
-            svg
-                height: 50px
-                width: 50px
+    width: 100%

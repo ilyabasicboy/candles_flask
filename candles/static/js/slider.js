@@ -46,14 +46,12 @@ $(function () {
     //Init Gallery Slider
     function swiperGalleryInit() {
         const swiper = new Swiper('.gallery__swiper', {
-            slidesPerView: 4,
-            grid: {
-                rows: 2,
-                fill: 'row'
-            },
+            slidesPerView: 3,
             autoplay: {
                 delay: 3000,
+                pauseOnMouseEnter: true
             },
+            loop: true,
             spaceBetween: 10,
             pagination: {
                 el: '.gallery__swiper-pagination',

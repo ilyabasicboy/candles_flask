@@ -1,0 +1,50 @@
+<div class="shopping_cart__products">
+    <div class="shopping_cart__products-info">
+        {% if not basket_products %}
+            {% set basket_products=products.filter(id__in=session.shopping_cart.keys()) %}
+        {% endif %}
+        {% for product in basket_products %}
+            {% set product_id = product.id|string %}
+            {% set amount = session.shopping_cart.get(product_id) %}
+            <div class="shopping_cart__product">
+
+                {% set image=product.images.0 %}
+                {% if image %}
+                    <div class="shopping_cart__product-image">
+                        <img src="data:image;base64, {{ product.images.0.get_image() }}" alt="{{ image.title }}" title="{{ image.title }}">
+                    </div>
+                {% endif %}
+
+                <div class="shopping_cart__product-text">
+                    <div class="shopping_cart__product-title">
+                        {{ product.title }}
+                    </div>
+
+                    <div class="product__amount-block">
+                        <a class="catalog-btn-ajax" data-product="{{ product_id }}" href="{{ url_for('shopping_cart.delete_product', product_id=product.id) }}">-</a>
+                        <div class="product__amount">
+                            {{ amount }}
+                        </div>
+                        <a class="catalog-btn-ajax" data-product="{{ product_id }}" href="{{ url_for('shopping_cart.add_product', product_id=product.id) }}">+</a>
+                    </div>
+
+                    <div class="product__price">
+                        <span>{{ product.price*amount }}</span>  руб.
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="shopping__cart-total">
+        {% if session.shopping_cart_total %}
+            <div class="total_price">
+                Итого: <span>{{ session.shopping_cart_total }}</span> руб.
+            </div>
+        {% endif %}
+        <a class="clear__cart catalog-btn-ajax" href="{{ url_for('shopping_cart.clear_cart') }}">Очистить корзину</a>
+    </div>
+</div>
+
+
+{% include 'feedback/basket_form/basket_form.html' %}

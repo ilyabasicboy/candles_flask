@@ -1,101 +1,104 @@
-.catalog__content
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/catalog-bg.jpg') #000 no-repeat
+.catalog__section
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../img/catalog-bg.jpg') #000 no-repeat
     background-size: cover
-    color: $beige-color
-    padding: 100px 50px 50px
-    text-shadow: $green-shadow
 
-    .catalog__slider
-        display: block
-        margin-top: 80px
-        overflow: hidden
-        position: relative
-        min-height: 500px
-
-        .catalog__slider-wrapper
-
-            .prodict__card
-                display: flex
-                align-items: center
-                justify-content: space-around
-
-                .product__image-wrapper
-                    max-width: 40%
-
-                    img
-                        max-height: 350px
-                        border-radius: 3px
-                        box-shadow: $beige-shadow
+    .catalog__content
+        color: $beige-color
+        padding: 100px 50px 50px
+        text-shadow: $green-shadow
 
 
-                .product__content
-                    max-width: 40%
-                    padding: 15px
-                    text-align: center
+        .catalog__slider
+            display: block
+            margin-top: 80px
+            overflow: hidden
+            position: relative
+            min-height: 500px
 
-                    .product__title
-                        font-size: 42px
-                        font-weight: 600
-                        letter-spacing: 3px
+            .catalog__slider-wrapper
 
-                    .product__title:after
-                        content: ''
-                        width: 50px
-                        height: 5px
-                        border-radius: 50px
-                        margin: 20px auto 0px
-                        display: block
-                        background: $green-color
+                .prodict__card
+                    display: flex
+                    align-items: center
+                    justify-content: space-around
 
-                    .product__subtitle
-                        margin-top: 20px
-                        font-size: 20px
-                        line-height: 20px
-                        font-weight: 600
+                    .product__image-wrapper
+                        max-width: 40%
 
-                    .product__desc
-                        margin-top: 10px
-                        font-size: 16px
-                        line-height: 20px
+                        img
+                            max-height: 350px
+                            border-radius: 3px
+                            box-shadow: $beige-shadow
 
-                    .product__buy
-                        margin-top: 30px
-                        display: flex
-                        justify-content: space-around
 
-                        .product__price
-                            font-size: 28px
-                            text-align: right
-                            font-weight: bold
+                    .product__content
+                        max-width: 40%
+                        padding: 15px
+                        text-align: center
 
-                        .basket-info
-                            border: solid 2px $green-color
-                            border-radius: 5px
-                            padding: 10px
-                            @include centered-content
+                        .product__title
+                            font-size: 42px
+                            font-weight: 600
+                            letter-spacing: 3px
 
-                            .basket__amount-wrapper
-                                margin-left: 20px
+                        .product__title:after
+                            content: ''
+                            width: 50px
+                            height: 5px
+                            border-radius: 50px
+                            margin: 20px auto 0px
+                            display: block
+                            background: $green-color
+
+                        .product__subtitle
+                            margin-top: 20px
+                            font-size: 20px
+                            line-height: 20px
+                            font-weight: 600
+
+                        .product__desc
+                            margin-top: 10px
+                            font-size: 16px
+                            line-height: 20px
+
+                        .product__buy
+                            margin-top: 30px
+                            display: flex
+                            justify-content: space-around
+
+                            .product__price
+                                font-size: 28px
+                                text-align: right
+                                font-weight: bold
+
+                            .basket-info
+                                border: solid 2px $green-color
+                                border-radius: 5px
+                                padding: 10px
                                 @include centered-content
-                                font-size: 18px
 
-                                a
-                                    font-weight: 600
+                                .basket__amount-wrapper
+                                    margin-left: 20px
+                                    @include centered-content
+                                    font-size: 18px
 
-                                a:hover
-                                    text-decoration: none
+                                    a
+                                        font-weight: 600
 
-                                .basket__amount
-                                    margin-left: 10px
-                                    margin-right: 10px
+                                    a:hover
+                                        text-decoration: none
 
-        /* slider navigation */
+                                    .basket__amount
+                                        margin-left: 10px
+                                        margin-right: 10px
 
-        .catalog__slider-btn:after
-            transition: ease all 0.5s
+            /* slider navigation */
 
-        .catalog__slider-btn:after
-            color: $beige-color
+            .catalog__slider-btn:after
+                transition: ease all 0.5s
 
-        .catalog__slider-btn:hover:after
-            color: $green-color
+            .catalog__slider-btn:after
+                color: $beige-color
+
+            .catalog__slider-btn:hover:after
+                color: $green-color

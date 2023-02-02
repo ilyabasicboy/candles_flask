@@ -157,16 +157,19 @@
                     </h2>
                     <div class="content__block">
                         <div class="gallery__swiper swiper">
-                            <div class="gallery__swiper-wrapper swiper-wrapper">
+                            <div class="gallery__swiper-wrapper mfp-gallery gallery swiper-wrapper">
                                 {% for image in gallery.images %}
-                                    <a href="" class="gallery__image-link swiper-slide">
-                                        <img src="data:image;base64, {{ image.get_image() }}" alt="">
+                                <div class="gallery__item swiper-slide">
+                                    {% set image_data = image.get_image() %}
+                                    <a href="data:image;base64, {{ image_data }}" data-href="data:image;base64, {{ image_data }}" class="gallery__image-link gallery__item-link" alt="{{ image.title }}">
+                                        <img src="data:image;base64, {{ image_data }}" alt="{{ image.title }}">
                                         {% if image.title %}
                                             <span class="image-title">
                                                 {{ image.title }}
                                             </span>
                                         {% endif %}
                                     </a>
+                                </div>
                                 {% endfor %}
                             </div>
                             <div class="swiper-pagination slider-pagination gallery__swiper-pagination"></div>

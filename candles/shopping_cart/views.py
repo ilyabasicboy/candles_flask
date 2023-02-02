@@ -37,7 +37,7 @@ def add_product(product_id):
 
         catalog_btn_template = render_template('includes/catalog_btn_template.html', product_id=product_id)
         basket_info = render_template(
-            'feedback/basket_form/basket_form.html',
+            'includes/basket.html',
             product_id=product_id,
             basket_products=Product.objects(id__in=session['shopping_cart'].keys()),
             basket_form=BasketForm(),
@@ -53,7 +53,10 @@ def add_product(product_id):
 
 @bp.route('/clear_cart/', methods=['GET', 'POST'])
 def clear_cart():
-    session.pop('shopping_cart')
+    try:
+        session.pop('shopping_cart')
+    except:
+        pass
 
     # ajax logic
     request_xhr_key = request.headers.get('X-Requested-With')
@@ -95,7 +98,7 @@ def delete_product(product_id):
 
             if session['shopping_cart']:
                 basket_info = render_template(
-                    'feedback/basket_form/basket_form.html',
+                    'includes/basket.html',
                     product_id=product_id,
                     basket_products=Product.objects(id__in=session['shopping_cart'].keys()),
                     basket_form=BasketForm(),

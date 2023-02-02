@@ -3,7 +3,7 @@
 
     <div class="basket-info-js">
         {% if session.shopping_cart %}
-            {% include 'feedback/basket_form/basket_form.html' %}
+            {% include 'includes/basket.html' %}
         {% else %}
             {% include 'includes/empty_basket.html' %}
         {% endif %}

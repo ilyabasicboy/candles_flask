@@ -1,0 +1,30 @@
+.feedback-form
+    .form__fieldset
+        display: flex
+        flex-direction: column
+
+    input, textarea
+        padding: 20px
+        margin-bottom: 15px
+        border-radius: 5px
+        border: none
+        background: #E5E5E5
+        font-style: 'Roboto-Light', sans-serif
+        font-size: 16px
+        box-sizing: border-box
+
+    input:focus, textarea:focus
+        border: $dark-green-color solid 2px
+        outline: none
+
+    textarea
+        resize: none
+
+    .error
+       border: #ff9191 solid 2px
+
+.thank-you
+    margin-top: 30px
+    font-size: 24px
+    text-align: center
+    font-weight: 600

@@ -1,4 +1,4 @@
-<form action="{{ url_for('feedback.question_feedback') }}" method="POST" class="feedback-form question__form">
+<form novalidate action="{{ url_for('feedback.question_feedback') }}" method="POST" class="feedback-form question__form">
     {{ question_form.csrf_token() }}
 
     <h3 class="form__title content-title-green">
@@ -6,10 +6,10 @@
     </h3>
 
     <fieldset class="form__fieldset">
-        <input id="name" name="name" required="" placeholder="Ваше имя" type="text" value="">
-        <input id="email" name="email" type="email" placeholder="E-mail" value="">
-        <input id="phone" name="phone" required="" type="text" placeholder="Ваш телефон" value="">
-        <textarea id="question" name="question" required="" rows="5" placeholder="Задайте ваш вопрос"></textarea>
+        <input class="{% if question_form.name.errors %}error{% endif %}" id="name" name="name" required="" placeholder="Ваше имя" type="text" {% if question_form.data.name %}value="{{ question_form.data.name }}"{% endif %}>
+        <input class="{% if question_form.email.errors %}error{% endif %}" id="email" name="email" required type="email" placeholder="E-mail" {% if question_form.data.email %}value="{{ question_form.data.email }}"{% endif %}>
+        <input class="{% if question_form.phone.errors %}error{% endif %}" id="phone" name="phone" type="text" placeholder="Ваш телефон" {% if question_form.data.phone %}value="{{ question_form.data.phone }}"{% endif %}>
+        <textarea class="{% if question_form.question.errors %}error{% endif %}" id="question" name="question" required="" rows="5" placeholder="Задайте ваш вопрос">{% if question_form.data.question %}{{ question_form.data.question }}{% endif %}</textarea>
 
         <button type="submit" class="btn">Отправить</button>
     </fieldset>

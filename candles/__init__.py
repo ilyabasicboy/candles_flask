@@ -70,7 +70,7 @@ def create_app():
             'basket_form': BasketForm(),
             'question_form': QuestionForm()
         }
-        return render_template('frontpage.html', **context)
+        return render_template('frontpage/frontpage.html', **context)
 
     from candles.feedback import views as feedback
     app.register_blueprint(feedback.bp)

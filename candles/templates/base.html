@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>{% block title %}Свечная лавка{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='bundle/bundle.061506e84d672313b689.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bundle/bundle.2f37d6fcc64660e02d67.css') }}">
 </head>
 <body>
     <header class="header sticky">
@@ -71,10 +72,8 @@
         </div>
     </header>
 
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
+    {% block content %}
+    {% endblock %}
 
     <footer class="footer">
         <div class="container">
@@ -103,7 +102,7 @@
     {% include 'includes/shopping_cart.html' %}
 
     {% block js %}
-        <script src="{{ url_for('static', filename='bundle/bundle.061506e84d672313b689.js') }}"></script>
+        <script src="{{ url_for('static', filename='bundle/bundle.2f37d6fcc64660e02d67.js') }}"></script>
     {% endblock %}
 </body>
 </html>

@@ -26,6 +26,5 @@ class RegistrationForm(form.Form):
     password = fields.PasswordField(validators=[validators.required()])
 
     def validate_login(self, field):
-        print('login:', self.login.data)
         if User.objects(login=self.login.data):
             raise validators.ValidationError('Duplicate username')

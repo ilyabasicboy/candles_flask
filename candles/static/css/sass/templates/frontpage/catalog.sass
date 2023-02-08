@@ -7,6 +7,8 @@
         padding: 100px 50px 50px
         text-shadow: $green-shadow
 
+        @media screen and (max-width: $xs-max)
+            padding: 50px 0
 
         .catalog__slider
             display: block
@@ -15,6 +17,9 @@
             position: relative
             min-height: 500px
 
+            @media screen and (max-width: $sm-max)
+                margin-top: 0
+
             .catalog__slider-wrapper
 
                 .prodict__card
@@ -22,13 +27,22 @@
                     align-items: center
                     justify-content: space-around
 
+                    @media screen and (max-width: $sm-max)
+                        flex-direction: column
+
                     .product__image-wrapper
                         max-width: 40%
+
+                        @media screen and (max-width: $sm-max)
+                            max-width: 80%
 
                         img
                             max-height: 350px
                             border-radius: 3px
                             box-shadow: $beige-shadow
+
+                            @media screen and (max-width: $sm-max)
+                                max-height: 200px
 
 
                     .product__content
@@ -36,10 +50,19 @@
                         padding: 15px
                         text-align: center
 
+                        @media screen and (max-width: $sm-max)
+                            max-width: 80%
+
                         .product__title
                             font-size: 42px
                             font-weight: 600
                             letter-spacing: 3px
+
+                            @media screen and (max-width: $sm-max)
+                                font-size: 32px
+
+                            @media screen and (max-width: $xs-max)
+                                font-size: 24px
 
                         .product__title:after
                             content: ''
@@ -50,26 +73,45 @@
                             display: block
                             background: $green-color
 
+                            @media screen and (max-width: $sm-max)
+                                display: none
+
                         .product__subtitle
                             margin-top: 20px
-                            font-size: 20px
+                            font-size: 24px
                             line-height: 20px
                             font-weight: 600
+
+                            @media screen and (max-width: $sm-max)
+                                font-size: 20px
+
+                            @media screen and (max-width: $xs-max)
+                                font-size: 18px
 
                         .product__desc
                             margin-top: 10px
                             font-size: 16px
                             line-height: 20px
 
+                            @media screen and (max-width: $xs-max)
+                                font-size: 14px
+
                         .product__buy
                             margin-top: 30px
                             display: flex
                             justify-content: space-around
 
+                            @media screen and (max-width: $sm-max)
+                                margin-top: 10px
+
                             .product__price
                                 font-size: 28px
                                 text-align: right
                                 font-weight: bold
+                                vertical-align: middle
+
+                                @media screen and (max-width: $xs-max)
+                                    font-size: 18px
 
                             .basket-info
                                 border: solid 2px $green-color
@@ -77,10 +119,19 @@
                                 padding: 10px
                                 @include centered-content
 
+                                @media screen and (max-width: $sm-max)
+                                    padding: 5px
+                                    font-size: 14px
+
+
                                 .basket__amount-wrapper
                                     margin-left: 20px
                                     @include centered-content
                                     font-size: 18px
+
+                                    @media screen and (max-width: $sm-max)
+                                        margin-left: 10px
+                                        font-size: 16px
 
                                     a
                                         font-weight: 600

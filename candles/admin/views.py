@@ -31,13 +31,12 @@ class CustomAdminIndexView(admin.AdminIndexView):
             login.login_user(user)
             return redirect(url_for('admin.index'))
 
-        return render_template('form.html', form=form)
+        return render_template('auth/login.html', form=form)
 
 
     @expose('/register/', methods=('GET', 'POST'))
     def register_view(self):
         form = RegistrationForm(request.form)
-        print(request.form)
         if request.method == 'POST' and form.validate():
             user = User()
 
@@ -47,7 +46,7 @@ class CustomAdminIndexView(admin.AdminIndexView):
             login.login_user(user)
             return redirect(url_for('admin.index'))
 
-        return render_template('form.html', form=form)
+        return render_template('auth/register.html', form=form)
 
 
     @expose('/logout/')

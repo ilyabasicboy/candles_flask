@@ -46,10 +46,23 @@ $(function () {
     //Init Gallery Slider
     function swiperGalleryInit() {
         const swiper = new Swiper('.gallery__swiper', {
-            slidesPerView: 3,
             autoplay: {
                 delay: 3000,
                 pauseOnMouseEnter: true
+            },
+            breakpoints: {
+                1024: {
+                    slidesPerView: 3,
+                    slidesPerGroup: 3,
+                },
+                600: {
+                    slidesPerView: 2,
+                    slidesPerGroup: 2,
+                },
+                360: {
+                    slidesPerView: 1,
+                    slidesPerGroup: 1,
+                },
             },
             loop: true,
             spaceBetween: 10,

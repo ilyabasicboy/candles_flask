@@ -4,11 +4,19 @@
         color: $dark-green-color
         padding: 100px 0px
 
+        @media screen and (max-width: $xs-max)
+            padding: 50px 0
+
         .step__block
             display: flex
             align-items: center
             justify-content: space-around
             margin-top: 50px
+
+            @media screen and (max-width: $sm-max)
+                flex-direction: column-reverse
+                margin-top: 20px
+
             .step__icon
                 width: 40%
                 @include centered-content
@@ -21,10 +29,12 @@
                         width: 150px
                         height: 150px
             &-text
-                padding-left: 50px
                 width: 60%
                 display: flex
                 align-items: center
+
+                @media screen and (max-width: $sm-max)
+                    width: 100%
 
                 .text-loop
                     text-shadow: $black-solid-shadow
@@ -34,6 +44,7 @@
 
                 .text-wrapper
                     margin-left: 50px
+
                     .step__description
                         a:hover
                             text-decoration: none

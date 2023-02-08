@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% include 'frontpage/includes/hero_block.html' %}
+
+    {% if advantages %}
+        {% include 'frontpage/includes/about_block.html' %}
+    {% endif %}
+
+    {% if products %}
+        {% include 'frontpage/includes/catalog_block.html' %}
+    {% endif %}
+
+    {% if order_steps %}
+        {% include 'frontpage/includes/order_steps_block.html' %}
+    {% endif %}
+
+    {% if gallery.images %}
+        {% include 'frontpage/includes/gallery_block.html' %}
+    {% endif %}
+
+    {% if contacts %}
+        {% include 'frontpage/includes/contacts_block.html' %}
+    {% endif %}
+{% endblock %}

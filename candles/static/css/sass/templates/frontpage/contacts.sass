@@ -2,24 +2,34 @@
     color: $dark-green-color
     padding: 100px 50px
 
+    @media screen and (max-width: $xs-max)
+        padding: 50px 0
+
     .content__block
         display: flex
         align-items: start
         justify-content: space-around
 
-        .contacts__title
-            font-size: 36px
-            font-weight: 500
-            margin-bottom: 30px
+        @media screen and (max-width: $sm-max)
+            flex-direction: column
+            justify-content: center
+            align-items: center
 
         .contacts__block
             @include centered-content
             flex-direction: column
             width: 40%
+            text-align: center
+
+            @media screen and (max-width: $sm-max)
+                width: 80%
 
             .contacts__list
                 @include centered-content
                 width: 100%
+
+                @media screen and (max-width: $xs-max)
+                    flex-direction: column
 
                 .contact-link
                     text-decoration: none
@@ -39,3 +49,8 @@
 
         .form-wrapper
             width: 40%
+            text-align: center
+
+            @media screen and (max-width: $sm-max)
+                margin-top: 30px
+                width: 80%

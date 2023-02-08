@@ -1,18 +1,21 @@
-{% extends 'base.html' %}
-
-{% block title %}Авторизация{% endblock %}
-
-{% block content %}
-  <form method="post">
-    <label>
-      Имя пользователя:
-      <input name="username" id="username" required placeholder="Введите ваш логин">
-    </label>
-    <label for="password">
-      Пароль:
-      <input type="password" name="password" id="password" required placeholder="Введите пароль">
-    </label>
-    <input type="submit" value="Войти">
-  </form>
-{% endblock %}
-
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <title>Авторизация</title>
+  </head>
+  <body>
+    <form method="post">
+      <label>
+        Имя пользователя:
+        <input name="login" id="username" required placeholder="Введите ваш логин">
+      </label>
+      <label for="password">
+        Пароль:
+        <input type="password" name="password" id="password" required placeholder="Введите пароль">
+      </label>
+      <input type="submit" value="Войти">
+    </form>
+  </body>
+</html>

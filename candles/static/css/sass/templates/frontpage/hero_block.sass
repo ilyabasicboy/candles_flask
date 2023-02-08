@@ -6,6 +6,9 @@
         display: flex
         justify-content: center
 
+        @media screen and (max-width: $xs-max)
+            padding: 100px 0
+
         .hero_block__content
             color: #fff
             text-transform: uppercase
@@ -21,8 +24,14 @@
                 .image-anise, .image-candle
                     width: 120px
 
+                    @media screen and (max-width: $xs-max)
+                        width: 100px
+
                 .image-cup
                     width: 100px
+
+                    @media screen and (max-width: $xs-max)
+                        width: 80px
 
             .hero-title
                 font-size: 24px

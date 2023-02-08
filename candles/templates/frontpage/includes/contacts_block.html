@@ -1,0 +1,33 @@
+<section class="contacts__section" id="contacts">
+    <div class="container">
+        <div class="contacts__content">
+            <h2 class="content-title content-title-green">
+                Связаться с нами
+            </h2>
+            <div class="content__block">
+                {% if contacts %}
+                    <div class="contacts__block" data-aos="fade-up" data-aos-duration="800">
+                        <h3 class="block__title content-title-green">
+                            Мы в соцсетях
+                        </h3>
+                        <div class="contacts__list">
+                            {% for contact in contacts %}
+                                <a class="contact-link" href="{{ contact.link }}" target="_blank">
+                                    {% set contact_icon=contact.icon.get_file() %}
+                                    <div class="contact__icon" title="{{ contact.title }}">
+                                        {% if contact_icon %}
+                                            {{ contact_icon|safe }}
+                                        {% endif %}
+                                    </div>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="form-wrapper" data-aos="fade-up" data-aos-duration="800">
+                    {% include 'feedback/question_form/question_form.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

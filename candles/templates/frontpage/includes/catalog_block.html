@@ -1,0 +1,20 @@
+<section class="catalog__section" id="catalog">
+    <div class="container">
+        <div class="catalog__content">
+            <h2 class="content-title">
+                Каталог свечей
+            </h2>
+            <div class="swiper catalog__slider">
+                <div class="swiper-wrapper catalog__slider-wrapper">
+                    {% for product in products %}
+                        {% include 'includes/product_card.html' %}
+                    {% endfor %}
+                </div>
+                <div class="catalog__swiper-pagination swiper-pagination slider-pagination"></div>
+
+                <div class="swiper-button-prev catalog__slider-btn"></div>
+                <div class="swiper-button-next catalog__slider-btn"></div>
+            </div>
+        </div>
+    </div>
+</section>

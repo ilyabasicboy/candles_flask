@@ -12,6 +12,15 @@
     position: relative
     transition: ease all 1s
 
+    @media screen and (max-width: $sm-max)
+        margin: auto
+        border-radius: 0
+
+    @media screen and (max-width: $xs-max)
+        max-width: 100%
+        max-height: 100%
+        padding: 50px 30px
+
     .shopping_cart__products
         &-info
             display: grid
@@ -22,8 +31,17 @@
             padding-bottom: 30px
             border-bottom: 1px solid $green-color
 
+            @media screen and(max-width: $sm-max)
+                justify-items: center
+                grid-template-columns: auto
+
             .shopping_cart__product
-                @include centered-content
+                display: flex
+                justify-content: start
+                align-items: center
+
+                @media screen and(max-width: $sm-max)
+                    width: 80%
 
                 &-image
                     img
@@ -67,7 +85,6 @@
                     font-size: 24px
 
             .clear__cart
-                margin-top: 20px
                 align-self: flex-end
 
     a:hover

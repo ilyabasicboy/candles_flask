@@ -1,0 +1,50 @@
+<section class="about__section" id="about">
+    <div class="container">
+        <div class="about">
+            <div class="about__content">
+                <h2 class="content-title content-title-green">
+                    О наших изделиях
+                </h2>
+                <div class="advantages">
+                    {% for advantage in advantages %}
+                        <div class="advantage__block" data-aos="fade-up" data-aos-duration="800">
+                            {% if advantage.image %}
+                                <div class="image__block">
+                                    <img src="data:image;base64, {{ advantage.image.get_image() }}" alt="">
+                                </div>
+
+                            {% endif %}
+                            <div class="advantage__block-text">
+                                <div class="text-wrapper">
+                                    {% if advantage.title %}
+                                        <div class="block__title content-title-green">
+                                            <p>
+                                                {{ advantage.title }}
+                                            </p>
+                                            <span>{{ advantage.title[0] }}</span>
+                                        </div>
+                                    {% endif %}
+                                    {% if advantage.items or advantage.description %}
+                                        <div class="advantage__block-description block__description">
+                                            {% if advantage.items %}
+                                                <ul class="content__list">
+                                                    {% for item in advantage.items %}
+                                                        <li>
+                                                            {{ item.text }}
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% elif advantage.description %}
+                                                {{ advantage.description }}
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

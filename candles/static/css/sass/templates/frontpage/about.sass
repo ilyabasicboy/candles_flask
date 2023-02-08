@@ -5,10 +5,14 @@
         color: $dark-green-color
         padding: 100px 0px
 
-        .advantage__block:nth-child(2n)
+        @media screen and (max-width: $xs-max)
+            padding: 50px 0
 
-            .advantage__block-text
-                order: -1
+        @media screen and (min-width: $sm-max)
+            .advantage__block:nth-child(2n)
+
+                .advantage__block-text
+                    order: -1
 
         .advantage__block
             display: flex
@@ -16,9 +20,15 @@
             align-items: center
             margin-top: 50px
 
+            @media screen and (max-width: $sm-max)
+                flex-direction: column
+
             .image__block
                 width: 40%
                 @include centered-content
+
+                @media screen and (max-width: $sm-max)
+                    width: 100%
 
                 img
                     max-height: 350px
@@ -26,7 +36,10 @@
                     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5)
                     border-radius: 5px
 
-            .advantage__block-text
+                    @media screen and (max-width: $sm-max)
+                        max-height: 200px
+
+            &-text
                 @include centered-content
                 flex-direction: column
                 justify-content: center
@@ -35,6 +48,11 @@
 
                 .text-wrapper
                     padding: 50px 50px
+
+                    @media screen and (max-width: $sm-max)
+                        padding: 0
+                        text-align: center
+                        margin-top: 20px
 
                     .advantage__block-description
                         width: 100%
@@ -56,6 +74,9 @@
                             color: #e0e0e0
                             top: -80px
                             left: -30px
+
+                            @media screen and (max-width: $sm-max)
+                                display: none
 
                         p
                             z-index: 2

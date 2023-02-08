@@ -1,0 +1,38 @@
+<section class="order__section" id="order">
+    <div class="container">
+        <div class="order__content">
+            <h2 class="content-title content-title-green">
+                Как заказать
+            </h2>
+            <div class="content__block">
+                {% for step in order_steps %}
+                    <div class="step__block" data-aos="fade-up" data-aos-duration="800">
+                        <div class="step__block-text">
+                            <div class="text-loop">
+                                {{ loop.index }}.
+                            </div>
+                            <div class="text-wrapper">
+                                <div class="block__title step__title content-title-green">
+                                   {{ step.title }}
+                                </div>
+                                {% if step.description %}
+                                    <div class="block__description step__description">
+                                        {{ step.description|safe }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% set step_image=step.image.get_file() %}
+                        {% if step_image %}
+                            <div class="step__icon">
+                                <div class="step__icon-wrapper">
+                                    {{ step_image|safe }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

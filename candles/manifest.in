@@ -1,4 +1,0 @@
-include candles/schema.sql
-graft candles/static
-graft candles/templates
-global-exclude *.pyc

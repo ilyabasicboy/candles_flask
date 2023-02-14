@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask.helpers import send_from_directory
 from flask_mongoengine import MongoEngine
 from flask_admin import Admin
@@ -60,6 +60,7 @@ def create_app():
 
     @app.route('/')
     def index():
+        ip_address = request.headers.get('X-Real-IP', request.remote_addr)
         context = {
             'products': Product.objects(),
             'advantages': Advantage.objects(),
@@ -70,7 +71,7 @@ def create_app():
             'basket_form': BasketForm(),
             'question_form': QuestionForm()
         }
-        return render_template('frontpage/frontpage.html', **context)
+        return render_template('frontpage/frontpage.html',ip_address=ip_address, **context)
 
     from candles.feedback import views as feedback
     app.register_blueprint(feedback.bp)

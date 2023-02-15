@@ -8,7 +8,7 @@ from candles.auth.models import User
 
 
 # Create customized model view class
-class CustomModelView(ModelView):
+class AdminModelView(ModelView):
 
     def is_accessible(self):
         return login.current_user.is_authenticated

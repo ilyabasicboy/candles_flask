@@ -5,7 +5,7 @@ from flask_mongoengine import MongoEngine
 from flask_admin import Admin
 from candles.content.models import Gallery, Product, Advantage, OrderStep, Contact
 from candles.auth.models import User
-from candles.admin.views import CustomModelView, CustomAdminIndexView, UserAdminView
+from candles.admin.views import AdminModelView, CustomAdminIndexView, UserAdminView
 import flask_login as login
 from candles.feedback.forms import BasketForm, QuestionForm
 
@@ -38,12 +38,42 @@ def create_app():
     #----- FLASK-ADMIN -----#
 
     admin = Admin(app, 'Candles magazine', index_view=CustomAdminIndexView(), template_mode='bootstrap4')
-    admin.add_view(CustomModelView(User))
-    admin.add_view(CustomModelView(Product))
-    admin.add_view(CustomModelView(Advantage))
-    admin.add_view(CustomModelView(OrderStep))
-    admin.add_view(CustomModelView(Gallery))
-    admin.add_view(CustomModelView(Contact))
+    admin.add_view(
+        AdminModelView(
+            User,
+            name=u'Пользователи',
+        )
+    )
+    admin.add_view(
+        AdminModelView(
+            Advantage,
+            name=u'О наших изделиях',
+        )
+    )
+    admin.add_view(
+        AdminModelView(
+            Product,
+            name=u'Каталог',
+        )
+    )
+    admin.add_view(
+        AdminModelView(
+            OrderStep,
+            name=u'Как заказать'
+        )
+    )
+    admin.add_view(
+        AdminModelView(
+            Gallery,
+            name=u'Галерея'
+        )
+    )
+    admin.add_view(
+        AdminModelView(
+            Contact,
+            name=u'Контакты'
+        )
+    )
 
 
     # ensure the instance folder exists

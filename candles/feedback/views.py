@@ -31,7 +31,7 @@ def basket_feedback():
             )
             msg.html = text
             msg.subject = 'Заказ с сайта svechnayalavka-candles.ru'
-            # mail.send(msg)
+            mail.send(msg)
             session.pop('shopping_cart')
 
             request_xhr_key = request.headers.get('X-Requested-With')

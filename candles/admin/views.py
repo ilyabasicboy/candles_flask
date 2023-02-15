@@ -34,7 +34,7 @@ class CustomAdminIndexView(admin.AdminIndexView):
         return render_template('auth/login.html', form=form)
 
 
-    # @expose('/register/', methods=('GET', 'POST'))
+    @expose('/register/', methods=('GET', 'POST'))
     def register_view(self):
         form = RegistrationForm(request.form)
         if request.method == 'POST' and form.validate():

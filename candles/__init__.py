@@ -75,18 +75,11 @@ def create_app():
         )
     )
 
-
     # ensure the instance folder exists
     try:
         os.makedirs(app.instance_path)
     except OSError:
         pass
-
-    # views
-    @app.route('/media/<path:filename>')
-    def media(filename):
-        upload_folder = os.path.join(app.root_path, app.config['UPLOAD_FOLDER'])
-        return send_from_directory(upload_folder, filename)
 
     @app.route('/')
     def index():

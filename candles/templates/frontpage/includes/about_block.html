@@ -11,7 +11,7 @@
                             {% set image=advantage.image.get_image() %}
                             {% if image %}
                                 <div class="image__block">
-                                    <img src="data:image;base64, {{ image }}" alt="">
+                                    <img src="data:image;base64, {{ image }}" alt="{{ advantage.image.title }}" title="{{ advantage.image.title }}">
                                 </div>
                             {% endif %}
                             <div class="advantage__block-text">

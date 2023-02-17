@@ -3,7 +3,7 @@
     background-size: cover
 
     .catalog__content
-        color: $beige-color
+        color: #fff
         padding: 100px 50px 50px
         text-shadow: $green-shadow
 
@@ -105,9 +105,11 @@
                                 margin-top: 10px
 
                             .product__price
+                                height: 100%
                                 font-size: 28px
                                 text-align: right
                                 font-weight: bold
+                                display: table-cell
                                 vertical-align: middle
 
                                 @media screen and (max-width: $xs-max)
@@ -149,7 +151,7 @@
                 transition: ease all 0.5s
 
             .catalog__slider-btn:after
-                color: $beige-color
+                color: #fff
 
             .catalog__slider-btn:hover:after
                 color: $green-color

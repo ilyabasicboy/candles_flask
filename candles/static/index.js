@@ -8,9 +8,9 @@ import './css/style.sass'
 import './js/vendor/jquery.magnific-popup.js'
 import 'jquery.maskedinput/src/jquery.maskedinput'
 import './js/base'
+import './js/catalog'
 import './js/slider'
 import './js/popup'
-import './js/catalog'
 import './js/feedback'
 
 // Plugins

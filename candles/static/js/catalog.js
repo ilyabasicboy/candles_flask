@@ -31,6 +31,7 @@ function uploadBasketInfo(){
         loadContent(url, product_id);
     });
 }
+uploadBasketInfo()
 
 //Export Function
 export default loadContent;

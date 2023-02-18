@@ -11,7 +11,7 @@
                         <div class="gallery__item swiper-slide">
                             {% set image_data = image.get_image() %}
                             <a href="data:image;base64, {{ image_data }}" data-href="data:image;base64, {{ image_data }}" class="gallery__image-link gallery__item-link" alt="{{ image.title }}">
-                                <img src="data:image;base64, {{ image_data }}" alt="{{ image.title }}">
+                                <img loading="lazy" src="data:image;base64, {{ image_data }}" alt="{{ image.title }}">
                                 {% if image.title %}
                                     <span class="image-title">
                                         {{ image.title }}

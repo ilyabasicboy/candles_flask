@@ -17,21 +17,17 @@ function loadContent(url, product_id){
             $(`.product-info-js[data-product=${product_id}]`).html(data['catalog_btn_template']);
         }
         $('.basket-info-js').html(data['basket_info']);
-       uploadBasketInfo();
        feedbackForm();
     });
 }
 
 // Catalog Basket
-function uploadBasketInfo(){
-    $('.catalog-btn-ajax').on('click', function(e){
-        e.preventDefault();
-        let product_id = $(this).data('product');
-        let url = $(this).attr('href')
-        loadContent(url, product_id);
-    });
-}
-uploadBasketInfo()
+$(document).on('click', '.catalog-btn-ajax', function(e){
+    e.preventDefault();
+    let product_id = $(this).data('product');
+    let url = $(this).attr('href');
+    loadContent(url, product_id);
+});
 
 //Export Function
 export default loadContent;

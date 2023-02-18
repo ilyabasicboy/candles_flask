@@ -11,7 +11,7 @@
                 {% set image=product.images.0 %}
                 {% if image %}
                     <div class="shopping_cart__product-image">
-                        <img src="data:image;base64, {{ product.images.0.get_image() }}" alt="{{ image.title }}" title="{{ image.title }}">
+                        <img loading="lazy" src="data:image;base64, {{ product.images.0.get_image() }}" alt="{{ image.title }}" title="{{ image.title }}">
                     </div>
                 {% endif %}
 

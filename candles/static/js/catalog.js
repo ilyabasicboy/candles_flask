@@ -32,7 +32,5 @@ function uploadBasketInfo(){
     });
 }
 
-uploadBasketInfo();
-
 //Export Function
 export default loadContent;

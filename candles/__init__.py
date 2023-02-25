@@ -102,4 +102,7 @@ def create_app():
     from candles.shopping_cart import views as shopping_cart
     app.register_blueprint(shopping_cart.bp)
 
+    from candles.content import views as content
+    app.register_blueprint(content.bp)
+
     return app

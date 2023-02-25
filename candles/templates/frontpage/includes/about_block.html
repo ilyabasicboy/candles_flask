@@ -8,12 +8,12 @@
                 <div class="advantages">
                     {% for advantage in advantages %}
                         <div class="advantage__block" data-aos="fade-up" data-aos-duration="800">
-                            {% set image=advantage.image.get_image() %}
-                            {% if image %}
+                            {% if advantage.image.image %}
                                 <div class="image__block">
-                                    <img loading="lazy" src="data:image;base64, {{ image }}" alt="{{ advantage.image.title }}" title="{{ advantage.image.title }}">
+                                    <img loading="lazy" src="{{ url_for('content.api_images_view', id=advantage.image.image.grid_id, height=400) }}" alt="{{ advantage.image.title }}" title="{{ advantage.image.title }}">
                                 </div>
                             {% endif %}
+
                             <div class="advantage__block-text">
                                 <div class="text-wrapper">
                                     {% if advantage.title %}

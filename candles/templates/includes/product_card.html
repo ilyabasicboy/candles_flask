@@ -2,7 +2,7 @@
 <div class="prodict__card swiper-slide">
     {% if product.images %}
         <div class="product__image-wrapper">
-            <img loading="lazy" src="data:image;base64, {{ product.images.0.get_image() }}" title="{{ product.images.0.title|default(product.title, true) }}" alt="{{ product.images.0.title|default(product.title, true) }}">
+            <img loading="lazy" src="{{ url_for('content.api_images_view', id=product.images.0.image.grid_id, height=600) }}" title="{{ product.images.0.title|default(product.title, true) }}" alt="{{ product.images.0.title|default(product.title, true) }}">
         </div>
     {% endif %}
     <div class="product__content">

@@ -28,9 +28,6 @@
                 @include centered-content
                 width: 100%
 
-                @media screen and (max-width: $xs-max)
-                    flex-direction: column
-
                 .contact-link
                     text-decoration: none
                     display: flex
@@ -43,6 +40,10 @@
                         svg
                             height: 100px
                             width: 100px
+
+                            @media screen and (max-width: $xs-max)
+                                height: 80px
+                                width: 80px
 
                 .contact-link:hover
                     transform: scale(1.1)
